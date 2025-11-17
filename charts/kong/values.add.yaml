@@ -1,0 +1,8 @@
+proxy:
+  additionalListeners:
+    - serviceName: new-kong-proxy-tls
+      enabled: true
+      servicePort: 443
+      containerPort: 8443
+      protocol: TCP
+      parameters: ["http2"]
