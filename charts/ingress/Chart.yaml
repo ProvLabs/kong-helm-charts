@@ -7,17 +7,17 @@ maintainers:
     email: team-k8s@konghq.com
 name: ingress
 sources:
-  - https://github.com/Kong/charts/tree/main/charts/ingress
+  - https://github.com/ProvLabs/kong-helm-charts/tree/scirner22/additional-listener-config/charts/ingress
 version: 0.19.0
 appVersion: "3.9"
 dependencies:
   - name: kong
     version: "=2.48.0"
-    repository: https://charts.konghq.com
+    repository: 'file://../../charts/kong'
     alias: controller
     condition: controller.enabled
   - name: kong
     version: "=2.48.0"
-    repository: https://charts.konghq.com
+    repository: 'file://../../charts/kong'
     alias: gateway
     condition: gateway.enabled
