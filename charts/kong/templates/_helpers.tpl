@@ -330,19 +330,6 @@ Generic tool for creating KONG_PROXY_LISTEN, KONG_ADMIN_LISTEN, etc.
     {{- end -}}
   {{- end -}}
 
-  {{- if .additionalListeners -}}
-    {{- range $index, $entry := .additionalListeners }}
-      {{- if .enabled }}
-      {{- $listenConfig := dict -}}
-      {{- $listenConfig := merge $listenConfig . -}}
-      {{- $_ := set $listenConfig "parameters" .parameters -}}
-      {{- $_ := set $listenConfig "address" (default "0.0.0.0" .addresses) -}}
-      {{- $tlsListen := (include "kong.singleListen" $listenConfig) -}}
-      {{- $unifiedListen = append $unifiedListen $tlsListen -}}
-      {{- end -}}
-    {{- end -}}
-  {{- end -}}
-
   {{- $listenString := ($unifiedListen | join ", ") -}}
   {{- if eq (len $listenString) 0 -}}
     {{- $listenString = "off" -}}
